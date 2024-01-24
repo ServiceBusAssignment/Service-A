@@ -15,6 +15,10 @@ provider "azurerm" {
 module "service-bus-module" {
   source = "git::https://github.com/mleisa/assignment.git"
 
+  namespace_name = "namespace-aa"
+  queue_name_and_dlq = {
+    "queue1" = false
+  }
   action_group_name = "team1"
   alert_rule = {
     rule-a = {
@@ -24,9 +28,5 @@ module "service-bus-module" {
       dimension_operator = "Include"
       queue_name_list    = ["queue1"]
     }
-  }
-  namespace_name = "namespace-aa"
-  queue_name_and_dlq = {
-    "queue1" = false
   }
 }
